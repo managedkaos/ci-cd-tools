@@ -16,7 +16,7 @@ apt-get install -qq openjdk-8-jre
 
 echo '##  Installing NGINX'
 apt-get install -qq nginx
-#cp /vagrant/nginx.conf /etc/nginx/sites-available/default
+cp /vagrant/nginx.conf /etc/nginx/sites-available/default
 systemctl reload nginx
 
 echo '##  Installing GoCD Server'
