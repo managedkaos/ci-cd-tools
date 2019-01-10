@@ -1,0 +1,21 @@
+---
+version: '3.7'
+networks:
+    teamcity:
+        driver: bridge
+volumes:
+    teamcity-data:
+        external: true
+    teamcity-logs:
+        external: true
+services:
+    server:
+        container_name: teamcity-server
+        image: jetbrains/teamcity-server
+        volumes:
+            - teamcity-data:/data/teamcity_server/datadir
+            - teamcity-logs:/opt/teamcity/logs
+        networks:
+            - teamcity
+        ports:
+            - 8111:8111
