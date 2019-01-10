@@ -8,7 +8,7 @@ volumes:
         external: true
 services:
     server:
-        container_name: bamboo-server-compose
+        container_name: bamboo-server
         image: atlassian/bamboo-server
         volumes:
             - bambooVolume:/var/atlassian/application-data/bamboo
