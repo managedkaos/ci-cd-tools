@@ -4,14 +4,14 @@ networks:
     bamboo:
         driver: bridge
 volumes:
-    bambooVolume:
+    bamboo-data:
         external: true
 services:
     server:
         container_name: bamboo-server
         image: atlassian/bamboo-server
         volumes:
-            - bambooVolume:/var/atlassian/application-data/bamboo
+            - bamboo-data:/var/atlassian/application-data/bamboo
         networks:
             - bamboo
         ports:
