@@ -1,7 +1,10 @@
-.PHONY: up stop
+.PHONY: up stop volume
 
-up:
+up: volume
 	docker-compose up -d
+
+volume:
+	docker volume create --name bambooVolume
 
 stop:
 	docker-compose stop

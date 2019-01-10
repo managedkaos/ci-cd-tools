@@ -1,0 +1,22 @@
+---
+version: '3.7'
+networks:
+    gocd:
+        driver: bridge
+volumes:
+    gocd-data:
+        external: true
+    gocd-home:
+        external: true
+services:
+    server:
+        container_name: gocd-server
+        image: gocd/gocd-server:v18.12.0
+        volumes:
+            - gocd-data:/godata
+            - gocd-home:/home/go
+        networks:
+            - gocd
+        ports:
+            - 8153:8153
+            - 8154:8154
