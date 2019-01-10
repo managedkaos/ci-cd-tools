@@ -1,0 +1,18 @@
+---
+version: '3.7'
+networks:
+    bamboo:
+        driver: bridge
+volumes:
+    bambooVolume:
+        external: true
+services:
+    server:
+        container_name: bamboo-server-compose
+        image: atlassian/bamboo-server
+        volumes:
+            - bambooVolume:/var/atlassian/application-data/bamboo
+        networks:
+            - bamboo
+        ports:
+            - 8085:8085
