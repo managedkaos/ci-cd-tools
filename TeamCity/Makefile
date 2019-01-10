@@ -7,6 +7,7 @@ up: volume
 volume:
 	docker volume create --name teamcity-data
 	docker volume create --name teamcity-logs
+	docker volume create --name teamcity-agent
 
 stop:
 	docker-compose stop

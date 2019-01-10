@@ -8,6 +8,8 @@ volumes:
         external: true
     teamcity-logs:
         external: true
+    teamcity-agent:
+        external: true
 services:
     server:
         container_name: teamcity-server
@@ -19,3 +21,12 @@ services:
             - teamcity
         ports:
             - 8111:8111
+    agent:
+        container_name: teamcity-agent
+        image: jetbrains/teamcity-agent
+        volumes:
+            - teamcity-agent:/data/teamcity_agent/conf
+        networks:
+            - teamcity
+        environment:
+            - SERVER_URL=http://teamcity-server:8111
