@@ -5,11 +5,8 @@ networks:
         driver: bridge
 volumes:
     teamcity-data:
-        external: true
     teamcity-logs:
-        external: true
     teamcity-agent:
-        external: true
 services:
     server:
         container_name: teamcity-server

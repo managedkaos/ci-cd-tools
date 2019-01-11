@@ -5,7 +5,6 @@ networks:
         driver: bridge
 volumes:
     bamboo-data:
-        external: true
 services:
     server:
         container_name: bamboo-server
