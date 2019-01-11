@@ -1,8 +1,7 @@
 PORT=8484
 up:
 	docker-compose up -d
-
-	docker logs jenkins-server 2>&1| grep -A 2 "Please use the following password"
+	@./wait_for_jenkins_login.sh
 	@echo "http://localhost:$(PORT)"
 
 stop:
@@ -13,5 +12,6 @@ clean:
 
 clean-all:
 	docker-compose rm --stop --force -v
+	docker volume rm jenkins_jenkins-data || true
 
 .PHONY: up stop clean clean-all
