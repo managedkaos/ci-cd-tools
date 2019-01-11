@@ -1,10 +1,8 @@
 PORT=8484
 up:
 	docker-compose up -d
-	@echo "Starting the server.."
-	@./wait_for_jenkins_login.sh
-	@echo "Here's the initial admin password:"
-	docker exec jenkins-server cat /var/jenkins_home/secrets/initialAdminPassword || true
+
+	docker logs jenkins-server 2>&1| grep -A 2 "Please use the following password"
 	@echo "http://localhost:$(PORT)"
 
 stop:

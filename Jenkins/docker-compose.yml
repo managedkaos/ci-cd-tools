@@ -15,8 +15,3 @@ services:
             - jenkins
         ports:
             - 8484:8080
-    waiter:
-        build: .
-        depends_on:
-            - server
-        container_name: jenkins-waiter
