@@ -1,7 +1,6 @@
 PORT=8484
 up:
 	docker-compose up -d
-	@./wait_for_jenkins_login.sh
 	@echo "http://localhost:$(PORT)"
 
 stop:
