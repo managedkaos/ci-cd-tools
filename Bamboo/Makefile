@@ -1,11 +1,15 @@
-.PHONY: up stop volume
+.PHONY: up stop clean clean-all
 
-up: volume
+up:
 	docker-compose up -d
 	@echo "http://localhost:8085"
 
-volume:
-	docker volume create --name bamboo-data
-
 stop:
 	docker-compose stop
+
+clean:
+	docker-compose rm --stop --force
+
+clean-all:
+	docker-compose rm --stop --force -v
+

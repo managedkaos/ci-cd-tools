@@ -1,13 +1,15 @@
-.PHONY: up stop volume
+.PHONY: up stop clean clean-all
 
-up: volume
+up:
 	docker-compose up -d
 	@echo "http://localhost:8111"
 
-volume:
-	docker volume create --name teamcity-data
-	docker volume create --name teamcity-logs
-	docker volume create --name teamcity-agent
-
 stop:
 	docker-compose stop
+
+clean:
+	docker-compose rm --stop --force
+
+clean-all:
+	docker-compose rm --stop --force -v
+

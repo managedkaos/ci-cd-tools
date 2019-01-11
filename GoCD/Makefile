@@ -1,12 +1,15 @@
-.PHONY: up stop volume
+.PHONY: up stop clean clean-all
 
-up: volume
+up:
 	docker-compose up -d
 	@echo "http://localhost:8153"
 
-volume:
-	docker volume create --name gocd-data
-	docker volume create --name gocd-home
-
 stop:
 	docker-compose stop
+
+clean:
+	docker-compose rm --stop --force
+
+clean-all:
+	docker-compose rm --stop --force -v
+
