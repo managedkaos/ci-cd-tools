@@ -14,6 +14,6 @@ stop:
 clean:
 	docker-compose rm --stop --force
 
-clean:
+clean-all:
 	docker-compose rm --stop --force -v
 
