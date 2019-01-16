@@ -87,8 +87,8 @@ def main():
                         'export DEBIAN_FRONTEND=noninteractive\n',
                         'apt-get update\n',
                         'apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy upgrade\n',
-			'apt-get install -y nginx build-essential libssl-dev libffi-dev python3-pip python3-dev libffi-dev python3-setuptools python3-venv\n',
-			'pip3 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz\n',
+                        'apt-get install -y nginx build-essential libssl-dev libffi-dev python-pip python3-pip python3-dev python3-setuptools python3-venv\n',
+                        'pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz\n',
                         '# Signal Cloudformation when set up is complete\n',
                         '/usr/local/bin/cfn-signal -e $? --resource=Instance --region=', Ref('AWS::Region'), ' --stack=', Ref('AWS::StackName'), '\n',
                     ]
