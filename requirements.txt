@@ -1,4 +1,5 @@
 boto
+container-transform
 pylint
 troposphere
 yamllint
