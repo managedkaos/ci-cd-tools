@@ -1,0 +1,14 @@
+groups:
+  - name: servers
+    nodes:
+      - jenkins.cicdserver.com
+      - bamboo.cicdserver.com
+      - gocd.cicdserver.com
+      - teamcity.cicdserver.com
+      - agent.cicdserver.com
+    config:
+      ssh:
+        user: root
+        private-key: ~/.ssh/cicd-service-account.pem
+        host-key-check: false
+
