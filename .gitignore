@@ -106,3 +106,4 @@ venv.bak/
 # Dev Environment
 .vagrant
 .vscode
+doservers.txt
