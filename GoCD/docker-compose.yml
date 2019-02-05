@@ -4,17 +4,31 @@ networks:
     gocd:
         driver: bridge
 volumes:
-    gocd-data:
-    gocd-home:
+    server-data:
+    server-home:
+    agent-data:
+    agent-home:
 services:
     server:
         container_name: gocd-server
         image: gocd/gocd-server:v18.12.0
         volumes:
-            - gocd-data:/godata
-            - gocd-home:/home/go
+            - server-data:/godata
+            - server-home:/home/go
         networks:
             - gocd
         ports:
             - 8153:8153
             - 8154:8154
+    agent:
+        container_name: gocd-agent
+        image: gocd/gocd-agent-ubuntu-18.04:v19.1.0
+        depends_on:
+            - server
+        environment:
+            GO_SERVER_URL: "https://server:8154/go"
+        volumes:
+            - agent-data:/godata
+            - agent-home:/home/go
+        networks:
+            - gocd
