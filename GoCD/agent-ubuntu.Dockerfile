@@ -2,6 +2,7 @@ FROM gocd/gocd-agent-ubuntu-18.04:v19.1.0
 RUN apt update && \
     apt-get -y install \
         build-essential \
+        git \
         make \
         python \
         python-pip \
