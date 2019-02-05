@@ -22,13 +22,21 @@ services:
             - 8154:8154
     agent:
         container_name: gocd-agent
-        image: gocd/gocd-agent-ubuntu-18.04:v19.1.0
+        image: custom-gocd-agent:latest
+        build:
+            context: .
+            dockerfile: agent-alpine.Dockerfile
         depends_on:
             - server
         environment:
             GO_SERVER_URL: "https://server:8154/go"
+            AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+            AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+            AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
         volumes:
             - agent-data:/godata
             - agent-home:/home/go
         networks:
             - gocd
+        ports:
+            - 8152:8152
