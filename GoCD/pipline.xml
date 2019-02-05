@@ -1,0 +1,62 @@
+  <pipelines group="Only">
+    <pipeline name="test-aws" lockBehavior="unlockWhenFinished">
+      <environmentvariables>
+        <variable name="PATH">
+          <value>./venv/bin:$PATH</value>
+        </variable>
+      </environmentvariables>
+      <materials>
+        <git url="https://github.com/automate6500/gocd-demo" autoUpdate="false" materialName="gocd-demo" />
+      </materials>
+      <stage name="Requirements">
+        <jobs>
+          <job name="create-virtual-environment">
+            <tasks>
+              <exec command="python3">
+                <arg>-m</arg>
+                <arg>virtualenv</arg>
+                <arg>venv</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+          </job>
+          <job name="install-requirements">
+            <tasks>
+              <exec command="./venv/bin/python">
+                <arg>-m</arg>
+                <arg>pip</arg>
+                <arg>install</arg>
+                <arg>--upgrade</arg>
+                <arg>--requirement</arg>
+                <arg>requirements.txt</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+      <stage name="Check">
+        <jobs>
+          <job name="unittest">
+            <tasks>
+              <exec command="/usr/bin/make">
+                <arg>unittest</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+      <stage name="Build">
+        <jobs>
+          <job name="upload">
+            <tasks>
+              <exec command="/usr/bin/make">
+                <arg>upload</arg>
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+  </pipelines>
