@@ -25,7 +25,7 @@ services:
         image: custom-gocd-agent:latest
         build:
             context: .
-            dockerfile: agent-alpine.Dockerfile
+            dockerfile: agent-ubuntu.Dockerfile
         depends_on:
             - server
         environment:
