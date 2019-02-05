@@ -7,6 +7,7 @@ RUN apt update && \
         python-pip \
         python3 \
         python3-pip \
-        software-properties-common && \
+        software-properties-common \
+        vim && \
     pip install --upgrade pip virtualenv && \
     pip3 install --upgrade pip virtualenv
