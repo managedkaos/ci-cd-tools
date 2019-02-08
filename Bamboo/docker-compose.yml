@@ -8,7 +8,8 @@ volumes:
 services:
     server:
         container_name: bamboo-server
-        image: atlassian/bamboo-server
+        build:
+            context: .
         volumes:
             - bamboo-data:/var/atlassian/application-data/bamboo
         networks:
