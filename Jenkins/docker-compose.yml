@@ -8,10 +8,11 @@ volumes:
 services:
     server:
         container_name: jenkins-server
-        image: jenkins/jenkins:lts
+        build:
+            context: .
         volumes:
             - jenkins-data:/var/jenkins_home
         networks:
             - jenkins
         ports:
-            - 8484:8080
+            - 8080:8080

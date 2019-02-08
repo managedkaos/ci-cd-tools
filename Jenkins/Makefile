@@ -1,4 +1,4 @@
-PORT=8484
+PORT=8080
 up:
 	docker-compose up -d
 	@echo "http://localhost:$(PORT)"
