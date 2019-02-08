@@ -1,6 +1,6 @@
 PORT=8080
 up:
-	docker-compose up -d
+	docker-compose up --detach --build
 	@echo "http://localhost:$(PORT)"
 
 stop:
