@@ -1,0 +1,18 @@
+---
+version: '3.3'
+networks:
+    bamboo:
+        driver: bridge
+volumes:
+    bamboo-data:
+services:
+    server:
+        container_name: bamboo-server
+        build:
+            context: .
+        volumes:
+            - bamboo-data:/var/atlassian/application-data/bamboo
+        networks:
+            - bamboo
+        ports:
+            - 8085:8085
