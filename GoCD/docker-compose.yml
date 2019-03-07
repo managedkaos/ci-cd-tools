@@ -22,7 +22,7 @@ services:
             - 8154:8154
     agent:
         container_name: gocd-agent
-        image: custom-gocd-agent:latest
+        image: custom/gocd-agent:latest
         build:
             context: .
             dockerfile: agent-ubuntu.Dockerfile
